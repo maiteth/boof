@@ -14,7 +14,6 @@
             // initialisation angular
             ctrl.$onInit = function () {
 
-                // reprise du code d3 pour recuperer le fichier csv
                 d3.text(ctrl.csv, function (err, str) {
                     const dsv = d3.dsvFormat(';');
                     const csvData = dsv.parse(str, function (d) {
