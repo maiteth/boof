@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    const app = angular.module('main', []); // les [] pour initialiser un module, sinon on le recupere
+    const app = angular.module('main', ['ngSanitize']); // les [] pour initialiser un module, sinon on le recupere
     const ciqual = "../resources/ciqual.csv";
 
     app.component('boofTable', {
@@ -18,7 +18,15 @@
                 d3.text(ctrl.csv, function (err, str) {
                     const dsv = d3.dsvFormat(';');
                     const csvData = dsv.parse(str, function (d) {
-                        return d;
+                        const result = {};
+                        for (let p in d) {
+                            if (p in window.headers) {
+                                result[window.headers[p]] = d[p];
+                            } else {
+                                result[p] = d[p];
+                            }
+                        }
+                        return result;
                         // return {
                         //     id: d['ORIGFDNM'],
                         //     value: +d['Phosphore (mg/100g)']
