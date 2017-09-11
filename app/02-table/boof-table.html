@@ -1,0 +1,8 @@
+<table>
+    <tr>
+        <th ng-repeat="header in $ctrl.headers">{{header}}</th>
+    </tr>
+    <tr ng-repeat="row in $ctrl.rows">
+        <td ng-repeat="cell in row track by $index">{{cell}}</td>
+    </tr>
+</table>
