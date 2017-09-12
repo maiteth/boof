@@ -13,7 +13,7 @@
             // position sur la page
             const currentScrollTop = $window.pageYOffset || $window.document.documentElement.scrollTop;
             console.log('currentScrollTop', currentScrollTop);
-            // 
+
             if (lastScrollTop !== undefined) {
                 if (currentScrollTop > lastScrollTop) {
                     console.log('scrolling down');
