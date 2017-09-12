@@ -7,6 +7,10 @@ th {
     padding: 5px 8px;
 }
 
+th {
+    padding-bottom: 10px;
+}
+
 [ng-click] {
     cursor: pointer;
 }
