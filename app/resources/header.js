@@ -19,11 +19,13 @@ window.headers = {
     },
     'Energie, Règlement UE N° 1169/2011 (kJ/100g)': {
         short: 'Energie (1169/2011)',
-        long: 'Energie, Règlement UE N° 1169/2011 (kJ/100g)'
+        long: 'Energie, Règlement UE N° 1169/2011 (kJ/100g)',
+        href: 'https://fr.wikipedia.org/wiki/Information_nutritionnelle#Nouvelle_r.C3.A9glementation_europ.C3.A9enne_applicable_.C3.A0_partir_de_d.C3.A9cembre_2014_et_d.C3.A9cembre_2016:_R.C3.A8glement_1169.2F2011',
     },
     'Energie, Règlement UE N° 1169/2011 (kcal/100g)': {
         short: 'Energie (1169/2011)',
-        long: 'Energie, Règlement UE N° 1169/2011 (kcal/100g)'
+        long: 'Energie, Règlement UE N° 1169/2011 (kcal/100g)',
+        href: 'https://fr.wikipedia.org/wiki/Information_nutritionnelle#Nouvelle_r.C3.A9glementation_europ.C3.A9enne_applicable_.C3.A0_partir_de_d.C3.A9cembre_2014_et_d.C3.A9cembre_2016:_R.C3.A8glement_1169.2F2011',
     },
     'Energie, N x facteur Jones, avec fibres  (kJ/100g)': {
         short: 'Energie (N x facteur Jones)',
@@ -80,8 +82,9 @@ window.headers = {
         long: 'Alcool (g/100g)'
     },
     'Acides organiques (g/100g)': {
-        short: 'AO',
-        long: 'Acides organiques (g/100g)'
+        short: 'Acides organiques',
+        long: 'Acides organiques (g/100g)',
+        href: 'https://fr.wikipedia.org/wiki/Acide_organique',
     },
     'AG saturés (g/100g)': {
         short: 'AG saturés',

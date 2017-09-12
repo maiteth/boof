@@ -1,0 +1,7 @@
+.blueSquare {
+    display: block;
+    width: 500px;
+    height: 1500px;
+    margin: 0px auto;
+    background-color: lightblue;
+}
