@@ -1,4 +1,4 @@
 window.headers = {
-    'ORIGGPCD': 'grp#',
-    'ORIGFDCD': '#<br>#',
+    'ORIGGPCD': {short: 'grp#', long: 'Index de groupe'},
+    'ORIGFDCD': {short: '#<br>#', long: 'Index'},
 };

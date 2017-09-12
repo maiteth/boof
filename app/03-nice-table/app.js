@@ -18,15 +18,7 @@
                 d3.text(ctrl.csv, function (err, str) {
                     const dsv = d3.dsvFormat(';');
                     const csvData = dsv.parse(str, function (d) {
-                        const result = {};
-                        for (let p in d) {
-                            if (p in window.headers) {
-                                result[window.headers[p]] = d[p];
-                            } else {
-                                result[p] = d[p];
-                            }
-                        }
-                        return result;
+                        return d;
                         // return {
                         //     id: d['ORIGFDNM'],
                         //     value: +d['Phosphore (mg/100g)']
@@ -37,7 +29,16 @@
                     // recuperation des en-tetes
                     ctrl.headers = [];
                     for (let p in csvData[0]) {
-                        ctrl.headers.push(p);
+                        let header;
+                        if (p in window.headers) {
+                            header = window.headers[p];
+                        } else {
+                            header = {
+                                short: p,
+                                long: p
+                            };
+                        }
+                        ctrl.headers.push(header);
                     }
                     console.log('headers', ctrl.headers);
 
