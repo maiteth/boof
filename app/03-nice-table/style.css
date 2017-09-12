@@ -1,7 +1,12 @@
-td {
-    padding: 0px 5px;
+td,
+th {
+    padding: 0px 8px;
 }
 
 [ng-click] {
     cursor: pointer;
+}
+
+.family {
+    min-width: 200px;
 }

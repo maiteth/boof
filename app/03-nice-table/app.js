@@ -16,7 +16,16 @@
                 if (header.href) {
                     $window.open(header.href);
                 }
-            }
+            };
+
+            ctrl.getClass = function(header) {
+                console.log('getClass', arguments);
+                const result = {};
+                if (header.class) {
+                    result[header.class] = true;
+                }
+                return result;
+            };
 
             // initialisation angular
             ctrl.$onInit = function () {
