@@ -6,10 +6,17 @@
 
     app.component('boofTable', {
 
-        controller: function BoofTableCtrl($scope) {
+        controller: function BoofTableCtrl($scope, $window) {
             'ngInject';
             const ctrl = this;
             console.log('this.csv', this.csv);
+
+            ctrl.showLink = function(header) {
+                console.log('showLink', arguments);
+                if (header.href) {
+                    $window.open(header.href);
+                }
+            }
 
             // initialisation angular
             ctrl.$onInit = function () {
@@ -35,7 +42,7 @@
                         } else {
                             header = {
                                 short: p,
-                                long: p
+                                long: p,
                             };
                         }
                         ctrl.headers.push(header);

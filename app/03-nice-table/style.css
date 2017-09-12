@@ -1,3 +1,7 @@
 td {
     padding: 0px 5px;
 }
+
+[ng-click] {
+    cursor: pointer;
+}
