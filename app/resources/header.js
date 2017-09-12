@@ -6,15 +6,16 @@ window.headers = {
     'ORIGGPFR': {
         short: 'Famille',
         long: 'Famille d\'aliments',
-        class: 'family',
+        class: 'large',
     },
     'ORIGFDCD': {
-        short: '#<br>#',
+        short: 'ID',
         long: 'Index'
     },
     'ORIGFDNM': {
         short: 'Nom',
-        long: 'Nom de l\'aliment'
+        long: 'Nom de l\'aliment',
+        class: 'large',
     },
     'Energie, Règlement UE N° 1169/2011 (kJ/100g)': {
         short: 'Energie (1169/2011)',
@@ -26,11 +27,13 @@ window.headers = {
     },
     'Energie, N x facteur Jones, avec fibres  (kJ/100g)': {
         short: 'Energie (N x facteur Jones)',
-        long: 'Energie, N x facteur Jones, avec fibres (kcal/100g)'
+        long: 'Energie, N x facteur Jones, avec fibres (kcal/100g)',
+        class: 'medium',
     },
     'Energie, N x facteur Jones, avec fibres  (kcal/100g)': {
         short: 'Energie (N x facteur Jones)',
-        long: 'Energie, N x facteur Jones, avec fibres (kcal/100g)'
+        long: 'Energie, N x facteur Jones, avec fibres (kcal/100g)',
+        class: 'medium',
     },
     'Eau (g/100g)': {
         short: 'Eau',
@@ -78,19 +81,19 @@ window.headers = {
     },
     'Acides organiques (g/100g)': {
         short: 'AO',
-        long: 'Acide organiques (g/100g)'
+        long: 'Acides organiques (g/100g)'
     },
     'AG saturés (g/100g)': {
         short: 'AG saturés',
-        long: 'Acide gras saturés (g/100g)'
+        long: 'Acides gras saturés (g/100g)'
     },
     'AG monoinsaturés (g/100g)': {
         short: 'AG monoinsaturés',
-        long: 'Acide gras monoinsaturés (g/100g)'
+        long: 'Acides gras monoinsaturés (g/100g)'
     },
     'AG polyinsaturés (g/100g)': {
         short: 'AG polyinsaturés',
-        long: 'Acide gras polyinsaturés (g/100g)'
+        long: 'Acides gras polyinsaturés (g/100g)'
     },
     'AG 4:0, butyrique (g/100g)': {
         short: 'AG butyrique',
@@ -133,21 +136,23 @@ window.headers = {
         long: 'Acide gras 18:2 9c,12c (n-6), linoléique (g/100g)'
     },
     'AG 18:3 c9,c12,c15 (n-3), alpha-linolénique (g/100g)': {
-        short: 'AG alpha-linolénique',
+        short: 'AG ALA (Omega3)',
         long: 'Acide gras 18:3 c9,c12,c15 (n-3), alpha-linolénique (ALA) (g/100g)',
-        href: 'https://fr.wikipedia.org/wiki/Om%C3%A9ga-3'
+        href: 'https://fr.wikipedia.org/wiki/Acide_alpha-linol%C3%A9nique',
     },
     'AG 20:4 5c,8c,11c,14c (n-6), arachidonique (g/100g)': {
         short: 'AG arachidonique',
         long: 'Acide gras 20:4 5c,8c,11c,14c (n-6), arachidonique (g/100g)'
     },
     'AG 20:5 5c,8c,11c,14c,17c (n-3) EPA (g/100g)': {
-        short: 'AG EPA',
-        long: 'Acide gras 20:5 5c,8c,11c,14c,17c (n-3) EPA (g/100g)'
+        short: 'AG EPA (Omega3)',
+        long: 'Acide gras 20:5 5c,8c,11c,14c,17c (n-3), eicosapentaénoïque EPA (g/100g)',
+        href: 'https://fr.wikipedia.org/wiki/Acide_eicosapenta%C3%A9no%C3%AFque',
     },
     'AG 22:6 4c,7c,10c,13c,16c,19c (n-3) DHA (g/100g)': {
-        short: 'AG DHA',
-        long: 'Acide gras 22:6 4c,7c,10c,13c,16c,19c (n-3) DHA (g/100g)'
+        short: 'AG DHA (Omega3)',
+        long: 'Acide gras 22:6 4c,7c,10c,13c,16c,19c (n-3), docosahexaénoïque DHA (g/100g)',
+        href: 'https://fr.wikipedia.org/wiki/Acide_docosahexa%C3%A9no%C3%AFque',
     },
     'Cholestérol (mg/100g)': {
         short: 'Cholestérol',

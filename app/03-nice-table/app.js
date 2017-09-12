@@ -11,18 +11,20 @@
             const ctrl = this;
             console.log('this.csv', this.csv);
 
+            // inserer des lien dans les headers
             ctrl.showLink = function(header) {
                 console.log('showLink', arguments);
                 if (header.href) {
-                    $window.open(header.href);
+                    $window.open(header.href); // ouvre le lien (dans un nouvel onglet)
                 }
             };
 
+            // inserer une classe dans le DOM
             ctrl.getClass = function(header) {
                 console.log('getClass', arguments);
-                const result = {};
+                const result = {}; //  pour que retourner un objet
                 if (header.class) {
-                    result[header.class] = true;
+                    result[header.class] = true; // recupere la classe
                 }
                 return result;
             };

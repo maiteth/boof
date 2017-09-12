@@ -1,12 +1,20 @@
+body {
+    text-align: center
+}
+
 td,
 th {
-    padding: 0px 8px;
+    padding: 5px 8px;
 }
 
 [ng-click] {
     cursor: pointer;
 }
 
-.family {
+.large {
     min-width: 200px;
+}
+
+.medium {
+    min-width: 100px;
 }
