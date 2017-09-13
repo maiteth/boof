@@ -55,11 +55,11 @@
                     }
                     lastScrollTop = currentScrollTop;
 
-                    // console.log('elt.scrollTop', elt.scrollTop);
-                    // console.log('elt.clientHeight', elt.clientHeight);
-                    // console.log('elt.offsetHeight', elt.offsetHeight);
-
-                    if (elt.scrollTop + elt.clientHeight >= elt.scrollHeight) {
+                    console.log('elt.scrollTop', elt.scrollTop);
+                    console.log('elt.clientHeight', elt.clientHeight);
+                    console.log('elt.scrollHeight', elt.scrollHeight);
+                    const tolerance = 2;
+                    if (elt.scrollTop + elt.clientHeight >= elt.scrollHeight - tolerance) {
                         console.log('bottom reached');
                         boofTable.limit += 15;
                         $scope.$apply();
