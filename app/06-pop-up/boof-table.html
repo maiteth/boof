@@ -2,12 +2,12 @@
     <my-table>
         <my-header>
             <my-cell ng-repeat="header in ::$ctrl.headers" title="{{::header.long}}" ng-click="$ctrl.popup(header)" ng-class="$ctrl.getClass(header)"><span ng-bind-html="::header.short"></span>
-                <boof-popup ng-show="header.isPopupVisible">toto</boof-popup>
+                <boof-popup ng-show="header.isPopupVisible"></boof-popup>
             </my-cell>
         </my-header>
         <my-body>
-            <my-row ng-repeat="row in $ctrl.rows | limitTo:$ctrl.boofTable.limit">
-                <my-cell ng-repeat="cell in ::row track by $index" ng-class="$ctrl.getClass(cell)">{{::cell.value}}</my-cell>
+            <my-row ng-repeat="row in $ctrl.rows | orderBy: 'object[\'ORIGFDCD\']' |limitTo:$ctrl.boofTable.limit">
+                <my-cell ng-repeat="cell in ::row.array track by $index" ng-class="$ctrl.getClass(cell)">{{::cell.value}}</my-cell>
             </my-row>
         </my-body>
     </my-table>

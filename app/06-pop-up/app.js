@@ -71,7 +71,6 @@
                 });
             };
 
-            // inserer des lien dans les headers
             ctrl.popup = function (header) {
                 console.log('popup', arguments);
                 const popup = angular.element(document.body).find('boof-popup');
@@ -87,9 +86,22 @@
                         display: 'block',
                     });
                 }
+            };
 
+            ctrl.order = function getCol(matrix, col) {
+                const column = [];
+                console.log('column', column);
 
+                for (let i = 0; i < matrix.length; i++) {
+                    column.push(matrix[i][col]);
+                }
+                return column;
+                console.log('column', column);
 
+                column.sort();
+
+                // var array = [new Array(20), new Array(20), new Array(20)]; //..your 3x20 array
+                // getCol(array, 0); //Get first column
             };
 
             // initialisation angular
@@ -99,12 +111,16 @@
                 // reprise du code d3 pour recuperer le fichier csv
                 d3.text(ctrl.csv, function (err, str) {
                     const dsv = d3.dsvFormat(';');
-                    const csvData = dsv.parse(str, function (d) {
-                        return d;
-                        // return {
-                        //     id: d['ORIGFDNM'],
-                        //     value: +d['Phosphore (mg/100g)']
-                        // };
+                    const csvData = dsv.parse(str, function (row) {
+                        for (let p in row) {
+                            if (p in window.headers) {
+                                const header = window.headers[p];
+                                if (!header.type) {
+                                    row[p] = +row[p];
+                                }
+                            }
+                        }
+                        return row;
                     });
                     console.log('csvData', csvData);
 
@@ -127,7 +143,9 @@
 
                     // recuperation des lignes
                     ctrl.rows = csvData.map(function (row) {
-                        const result = [];
+                        const result = {};
+                        result.array = [];
+                        result.object = row;
                         for (let p in row) {
                             const cell = {
                                 value: row[p]
@@ -138,7 +156,7 @@
                                     cell.class = header.class;
                                 }
                             }
-                            result.push(cell); // push : push dans le dernier index du tableau
+                            result.array.push(cell); // push : push dans le dernier index du tableau
                         }
                         return result;
                     });

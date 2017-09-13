@@ -7,6 +7,7 @@ window.headers = {
         short: 'Famille',
         long: 'Famille d\'aliments',
         class: 'large',
+        type: 'string',
     },
     'ORIGFDCD': {
         short: 'ID',
@@ -16,6 +17,7 @@ window.headers = {
         short: 'Nom',
         long: 'Nom de l\'aliment',
         class: 'large',
+        type: 'string',
     },
     'Energie, Règlement UE N° 1169/2011 (kJ/100g)': {
         short: 'Energie (1169/2011)',
