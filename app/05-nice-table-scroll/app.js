@@ -107,7 +107,16 @@
                     ctrl.rows = csvData.map(function (row) {
                         const result = [];
                         for (let p in row) {
-                            result.push(row[p]); // push : push dans le dernier index du tableau
+                            const cell = {
+                                value: row[p]
+                            };
+                            if (p in window.headers) {
+                                const header = window.headers[p];
+                                if (header.class) {
+                                    cell.class = header.class;
+                                }
+                            }
+                            result.push(cell); // push : push dans le dernier index du tableau
                         }
                         return result;
                     });

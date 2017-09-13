@@ -68,7 +68,7 @@ my-row {
 
 my-cell {
     display: inline-block;
-    width: 200px;
+    width: 100px;
     padding: 5px 8px;
     white-space: normal;
 }
