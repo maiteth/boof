@@ -1,7 +1,7 @@
 window.headers = {
     'ORIGGPCD': {
         short: 'Code',
-        long: 'Code aliment interne Ciqual'
+        long: 'Code aliment interne Ciqual',
     },
     'ORIGGPFR': {
         short: 'Famille',

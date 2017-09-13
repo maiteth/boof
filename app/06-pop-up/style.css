@@ -1,4 +1,4 @@
-body {
+    body {
     display: table;
     position: fixed;
     width: 100%;
@@ -83,4 +83,11 @@ my-cell {
 
 .medium {
     min-width: 100px;
+}
+
+boof-popup {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: lightskyblue;
 }
