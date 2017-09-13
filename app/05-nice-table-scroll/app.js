@@ -40,7 +40,7 @@
                 scrollElt.bind('scroll', function () {
 
                     const elt = scrollElt[0];
-                    console.log('elt %O', elt);
+                    // console.log('elt %O', elt);
 
                     // position sur la page
                     const currentScrollTop = elt.scrollTop;
@@ -48,9 +48,9 @@
 
                     if (lastScrollTop !== undefined) {
                         if (currentScrollTop > lastScrollTop) {
-                            console.log('scrolling down');
+                            // console.log('scrolling down');
                         } else {
-                            console.log('scrolling up');
+                            // console.log('scrolling up');
                         }
                     }
                     lastScrollTop = currentScrollTop;
@@ -65,9 +65,9 @@
                         $scope.$apply();
                     }
 
-                    // if (currentScrollTop <= 0) {
-                    //     console.log('top reached');
-                    // }
+                    if (elt.scrollTop <= 0) {
+                        console.log('top reached');
+                    }
                 });
             };
 
