@@ -1,10 +1,12 @@
-<table>
-    <tr>
-        <th ng-repeat="header in ::$ctrl.headers" ng-bind-html="::header.short" title="{{::header.long}}" ng-click="$ctrl.showLink(header)"
-            ng-class="$ctrl.getClass(header)"></th>
-    </tr>
-    
-    <tr ng-repeat="row in $ctrl.rows | limitTo:$ctrl.boofTable.limit">
-        <td ng-repeat="cell in ::row track by $index">{{::cell}}</td>
-    </tr>
-</table>
+<my-table-wrapper>
+    <my-table>
+        <my-header>
+            <my-cell ng-repeat="header in ::$ctrl.headers" ng-bind-html="::header.short" title="{{::header.long}}" ng-click="$ctrl.showLink(header)"
+                ng-class="$ctrl.getClass(header)"></my-cell>
+        </my-header>
+
+        <my-body ng-repeat="row in $ctrl.rows | limitTo:$ctrl.boofTable.limit">
+            <my-cell ng-repeat="cell in ::row track by $index">{{::cell}}</my-cell>
+        </my-body>
+    </my-table>
+</my-table-wrapper>

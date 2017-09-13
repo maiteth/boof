@@ -13,12 +13,11 @@
         controller: function BoofTableCtrl($scope, $window, boofTable) {
             'ngInject';
             const ctrl = this;
-            console.log('this.csv', this.csv);
 
             ctrl.boofTable = boofTable;
 
             // inserer des lien dans les headers
-            ctrl.showLink = function(header) {
+            ctrl.showLink = function (header) {
                 console.log('showLink', arguments);
                 if (header.href) {
                     $window.open(header.href); // ouvre le lien (dans un nouvel onglet)
@@ -26,8 +25,7 @@
             };
 
             // inserer une classe dans le DOM
-            ctrl.getClass = function(header) {
-                console.log('getClass', arguments);
+            ctrl.getClass = function (header) {
                 const result = {}; //  pour que retourner un objet
                 if (header.class) {
                     result[header.class] = true; // recupere la classe
@@ -35,8 +33,47 @@
                 return result;
             };
 
+            ctrl.configScroll = function () {
+                let lastScrollTop;
+                // detecte le scroll
+                const scrollElt = angular.element(document.body).find('my-table');
+                scrollElt.bind('scroll', function () {
+
+                    const elt = scrollElt[0];
+                    console.log('elt %O', elt);
+
+                    // position sur la page
+                    const currentScrollTop = elt.scrollTop;
+                    // console.log('currentScrollTop', currentScrollTop);
+
+                    if (lastScrollTop !== undefined) {
+                        if (currentScrollTop > lastScrollTop) {
+                            console.log('scrolling down');
+                        } else {
+                            console.log('scrolling up');
+                        }
+                    }
+                    lastScrollTop = currentScrollTop;
+
+                    // console.log('elt.scrollTop', elt.scrollTop);
+                    // console.log('elt.clientHeight', elt.clientHeight);
+                    // console.log('elt.offsetHeight', elt.offsetHeight);
+
+                    if (elt.scrollTop + elt.clientHeight >= elt.scrollHeight) {
+                        console.log('bottom reached');
+                        boofTable.limit += 15;
+                        $scope.$apply();
+                    }
+
+                    // if (currentScrollTop <= 0) {
+                    //     console.log('top reached');
+                    // }
+                });
+            };
+
             // initialisation angular
             ctrl.$onInit = function () {
+                ctrl.configScroll();
 
                 // reprise du code d3 pour recuperer le fichier csv
                 d3.text(ctrl.csv, function (err, str) {
@@ -88,36 +125,4 @@
         templateUrl: 'boof-table.html' // lien du fichier a partir duquel on recupere
     });
 
-    app.controller('ScrollEventCtrl', function ($scope, $window, boofTable) {
-        'ngInject';
-        console.log('ScrollEventCtrl');
-        let lastScrollTop;
-        // detecte le scroll
-        angular.element($window).bind('scroll', function () {
-            console.log('scrolling is cool!');
-
-            // position sur la page
-            const currentScrollTop = $window.pageYOffset || $window.document.documentElement.scrollTop;
-            console.log('currentScrollTop', currentScrollTop);
-
-            if (lastScrollTop !== undefined) {
-                if (currentScrollTop > lastScrollTop) {
-                    console.log('scrolling down');
-                } else {
-                    console.log('scrolling up');
-                }
-            }
-            lastScrollTop = currentScrollTop;
-
-            if (($window.innerHeight + $window.scrollY) >= $window.document.body.offsetHeight) {
-                console.log('bottom reached');
-                boofTable.limit += 15;
-                $scope.$apply();
-            }
-
-            if (currentScrollTop <= 0) {
-                console.log('top reached');
-            }
-        });
-    });
 })();
