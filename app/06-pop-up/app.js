@@ -72,23 +72,6 @@
                 });
             };
 
-            ctrl.popup = function (header) {
-                console.log('popup', arguments);
-                const popup = angular.element(document.body).find('boof-popup');
-                console.log('popup', popup);
-                if (header.isPopupVisible) {
-                    header.isPopupVisible = false;
-                    popup.css({
-                        display: 'none',
-                    });
-                } else {
-                    header.isPopupVisible = true;
-                    popup.css({
-                        display: 'block',
-                    });
-                }
-            };
-
             ctrl.order = function getCol(matrix, col) {
                 const column = [];
                 console.log('column', column);
@@ -138,7 +121,6 @@
                             };
                         }
                         header.column = p;
-                        header.isPopupVisible = false;
                         ctrl.headers.push(header);
                     }
                     console.log('headers', ctrl.headers);
@@ -175,20 +157,39 @@
         templateUrl: 'boof-table.html' // lien du fichier a partir duquel on recupere
     });
 
-    app.component('boofPopup', {
+    app.component('myCellHeader', {
         bindings: {
             h: '=',
         },
-        controller: function (boofTable) {
+        controller: function ($element, boofTable) {
             'ngInject';
-            this.boofTable = boofTable;
+            const ctrl = this;
+            ctrl.boofTable = boofTable;
 
-            this.orderBy = function (col) {
+            ctrl.orderBy = function (col) {
                 console.log('orderBy', arguments);
-                this.boofTable.column = 'object[\'' + col + '\']';
-            }
+                ctrl.boofTable.column = 'object[\'' + col + '\']';
+            };
+
+            ctrl.popup = function (header) {
+                console.log('popup', arguments);
+                const popup = $element.find('boof-popup');
+                console.log('popup', popup);
+                if (ctrl.isPopupVisible) {
+                    ctrl.isPopupVisible = false;
+                    popup.css({
+                        display: 'none',
+                    });
+                } else {
+                    ctrl.isPopupVisible = true;
+                    popup.css({
+                        display: 'block',
+                    });
+                }
+            };
+
         },
-        templateUrl: './boof-layout/tmpl/boof-popup.html' // lien du fichier a partir duquel on recupere
+        templateUrl: './boof-layout/tmpl/my-cell-header.html' // lien du fichier a partir duquel on recupere
     });
 
 })();

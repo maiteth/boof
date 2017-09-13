@@ -1,10 +1,8 @@
 <my-table-wrapper>
     <my-table>
         <my-header>
-            <my-cell ng-repeat="header in ::$ctrl.headers" title="{{::header.long}}" ng-class="$ctrl.getClass(header)">
-                <div ng-click="$ctrl.popup(header)" ng-bind-html="::header.short"></div>
-                <boof-popup ng-show="header.isPopupVisible" h="header"></boof-popup>
-            </my-cell>
+            <my-cell-header ng-repeat="header in ::$ctrl.headers" title="{{::header.long}}" ng-class="$ctrl.getClass(header)" h="header">
+            </my-cell-header>
         </my-header>
         <my-body>
             <my-row ng-repeat="row in $ctrl.rows | orderBy: $ctrl.boofTable.column |limitTo:$ctrl.boofTable.limit">
