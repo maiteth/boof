@@ -11,8 +11,4 @@
         templateUrl: './boof-layout/tmpl/boof-footer.html' // lien du fichier a partir duquel on recupere
     });
 
-    app.component('boofPopup', {
-        templateUrl: './boof-layout/tmpl/boof-popup.html' // lien du fichier a partir duquel on recupere
-    });
-
 })();

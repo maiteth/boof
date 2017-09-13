@@ -1,3 +1,4 @@
 <my-popup>
-    <a href="{{header.href}}">Plus d'informations</a>
+    <a ng-href="{{$ctrl.h.href}}" target="_blank">Plus d'informations</a><br>
+    <button ng-click="$ctrl.orderBy($ctrl.h.column)">Order</button>
 </my-popup>

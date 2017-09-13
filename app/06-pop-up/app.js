@@ -6,6 +6,7 @@
 
     app.service('boofTable', function BoofTable() {
         this.limit = 40;
+        this.column = 'object[\'ORIGGPCD\']';
     });
 
     app.component('boofTable', {
@@ -136,6 +137,7 @@
                                 long: p,
                             };
                         }
+                        header.column = p;
                         header.isPopupVisible = false;
                         ctrl.headers.push(header);
                     }
@@ -148,13 +150,12 @@
                         result.object = row;
                         for (let p in row) {
                             const cell = {
-                                value: row[p]
+                                value: row[p],
+                                header: {},
                             };
                             if (p in window.headers) {
                                 const header = window.headers[p];
-                                if (header.class) {
-                                    cell.class = header.class;
-                                }
+                                cell.header = header;
                             }
                             result.array.push(cell); // push : push dans le dernier index du tableau
                         }
@@ -172,6 +173,22 @@
             csv: '@' // @ : recupere sous forme de chaine de caracteres
         },
         templateUrl: 'boof-table.html' // lien du fichier a partir duquel on recupere
+    });
+
+    app.component('boofPopup', {
+        bindings: {
+            h: '=',
+        },
+        controller: function (boofTable) {
+            'ngInject';
+            this.boofTable = boofTable;
+
+            this.orderBy = function (col) {
+                console.log('orderBy', arguments);
+                this.boofTable.column = 'object[\'' + col + '\']';
+            }
+        },
+        templateUrl: './boof-layout/tmpl/boof-popup.html' // lien du fichier a partir duquel on recupere
     });
 
 })();

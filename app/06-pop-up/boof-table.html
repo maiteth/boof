@@ -3,12 +3,12 @@
         <my-header>
             <my-cell ng-repeat="header in ::$ctrl.headers" title="{{::header.long}}" ng-class="$ctrl.getClass(header)">
                 <div ng-click="$ctrl.popup(header)" ng-bind-html="::header.short"></div>
-                <boof-popup ng-show="header.isPopupVisible"></boof-popup>
+                <boof-popup ng-show="header.isPopupVisible" h="header"></boof-popup>
             </my-cell>
         </my-header>
         <my-body>
-            <my-row ng-repeat="row in $ctrl.rows | orderBy: 'object[\'ORIGFDCD\']' |limitTo:$ctrl.boofTable.limit">
-                <my-cell ng-repeat="cell in ::row.array track by $index" ng-class="$ctrl.getClass(cell)">
+            <my-row ng-repeat="row in $ctrl.rows | orderBy: $ctrl.boofTable.column |limitTo:$ctrl.boofTable.limit">
+                <my-cell ng-repeat="cell in ::row.array track by $index" title="{{::cell.header.long}}" ng-class="$ctrl.getClass(cell.header)">
                     <div>{{::cell.value}}</div>
                 </my-cell>
             </my-row>
