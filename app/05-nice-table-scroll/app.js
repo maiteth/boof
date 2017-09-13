@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    const app = angular.module('main', ['ngSanitize']); // les [] pour initialiser un module, sinon on le recupere
+    const app = angular.module('main', ['ngSanitize', 'boof-layout']); // les [] pour initialiser un module, sinon on le recupere
     const ciqual = "../resources/ciqual.csv";
 
     app.service('boofTable', function BoofTable() {

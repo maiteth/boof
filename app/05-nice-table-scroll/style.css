@@ -1,4 +1,6 @@
 body {
+    display: block;
+    margin: 0px;
     text-align: center
 }
 
@@ -21,4 +23,19 @@ th {
 
 .medium {
     min-width: 100px;
+}
+
+boof-header {
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+    background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+boof-table {
+    display: block;
+    margin-top: 100px;
 }
