@@ -1,30 +1,15 @@
 (function () {
     'use strict';
 
-    const app = angular.module('main', ['ngSanitize', 'boof-layout']); // les [] pour initialiser un module, sinon on le recupere
-    const ciqual = "../resources/ciqual.csv";
+    const app = angular.module('boof-table'); // les [] pour initialiser un module, sinon on le recupere
 
-    app.service('boofTable', function BoofTable() {
-        this.limit = 40;
-        this.column = 'object[\'ORIGGPCD\'].value';
-        this.reverse = false;
-    });
-
-    app.component('boofTable', {
+     app.component('boofTable', {
 
         controller: function BoofTableCtrl($scope, $window, boofTable) {
             'ngInject';
             const ctrl = this;
 
             ctrl.boofTable = boofTable;
-
-            // inserer des lien dans les headers
-            ctrl.showLink = function (header) {
-                console.log('showLink', arguments);
-                if (header.href) {
-                    $window.open(header.href); // ouvre le lien (dans un nouvel onglet)
-                }
-            };
 
             // inserer une classe dans le DOM
             ctrl.getClass = function (header) {
@@ -85,6 +70,9 @@
 
                 column.sort();
 
+                // var array = [new Array(20), new Array(20), new Array(20)]; //..your 3x20 array
+                // getCol(array, 0); //Get first column
+            };
 
             // initialisation angular
             ctrl.$onInit = function () {
@@ -153,43 +141,6 @@
             csv: '@' // @ : recupere sous forme de chaine de caracteres
         },
         templateUrl: 'boof-table.html' // lien du fichier a partir duquel on recupere
-    });
-
-    app.component('myCellHeader', {
-        bindings: {
-            h: '=',
-        },
-        controller: function ($element, boofTable) {
-            'ngInject';
-            const ctrl = this;
-            ctrl.boofTable = boofTable;
-
-            ctrl.orderBy = function (col, reverse) {
-                console.log('orderBy', arguments);
-                ctrl.boofTable.column = 'object[\'' + col + '\']';
-                ctrl.boofTable.reverse = reverse;
-                ctrl.isPopupVisible = false;
-            };
-
-            ctrl.popup = function (header) {
-                console.log('popup', arguments);
-                const popup = $element.find('boof-popup');
-                console.log('popup', popup);
-                if (ctrl.isPopupVisible) {
-                    ctrl.isPopupVisible = false;
-                    popup.css({
-                        display: 'none',
-                    });
-                } else {
-                    ctrl.isPopupVisible = true;
-                    popup.css({
-                        display: 'block',
-                    });
-                }
-            };
-
-        },
-        templateUrl: './boof-layout/tmpl/my-cell-header.html' // lien du fichier a partir duquel on recupere
     });
 
 })();
