@@ -16,10 +16,10 @@
                 console.log('popup', popup);
                 if (ctrl.isPopupVisible) {
                     ctrl.isPopupVisible = false;
-                    veil.off();
+                    veil.stop();
                 } else {
                     ctrl.isPopupVisible = true;
-                    veil.on(ctrl);
+                    veil.start(ctrl.switchPopup);
                 }
             };
         },
@@ -31,20 +31,20 @@
         const veil = angular.element($document[0].body).find('my-veil');
         veil.on('click', () => {
             console.log('click');
-            this.off();
-            this.ctrl.switchPopup();
+            this.stop();
+            this.onStop();
             $rootScope.$apply();
         });
 
-        this.on = function (ctrl) {
+        this.start = function (onStop) {
             console.log('on');
             veil.css({
                 display: 'block'
             })
-            this.ctrl = ctrl;
+            this.onStop = onStop;
         };
-        this.off = function () {
-            console.log('off');
+        this.stop = function () {
+            console.log('stop');
             veil.css({
                 display: 'none'
             })
