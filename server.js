@@ -1,18 +1,17 @@
+'use strict';
+
 const express = require('express');
 const serveIndex = require('serve-index');
-const port = 8000;
 
 const app = express();
 
-webpackConfig.output.path = '/';
-const compiler = webpack(webpackConfig);
-app.use('/app/wpk/', webpackDevMiddleware(compiler, {}));
+// renvoie un fichier s'il existe
+app.use(express.static('.'));
 
-app.use(function (req, res, next) {
-	console.log('404: Page not Found', req.url);
-	next();
-});
+// renvoie un repertoire s'il existe
+// app.use(dir('.'));
+app.use(serveIndex('.', {icons: true}));
 
-app.listen(port, function() {
-	console.log('server started on port ' + port);
+app.listen(8000, function () {
+    console.log('Example app listening on port 8000!');
 });
