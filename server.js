@@ -4,7 +4,11 @@ const port = 8000;
 
 const app = express();
 
-app.use(function(req, res, next) {
+webpackConfig.output.path = '/';
+const compiler = webpack(webpackConfig);
+app.use('/app/wpk/', webpackDevMiddleware(compiler, {}));
+
+app.use(function (req, res, next) {
 	console.log('404: Page not Found', req.url);
 	next();
 });

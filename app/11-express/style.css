@@ -1,0 +1,108 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: table;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+    max-width: 100%;
+}
+
+boof-header {
+    display: table-row;
+    width: 100%;
+    height: 100px;
+    background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+boof-footer {
+    display: table-row;
+    width: 100%;
+    height: 100px;
+    background-color: hsla(0, 0%, 95%, 0.5);
+}
+
+boof-table {
+    display: table-row;
+    width: 100%;
+}
+
+my-table-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+my-table {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+my-header {
+    display: block;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+my-body {
+    display: block;
+}
+
+my-row {
+    display: block;
+    white-space: nowrap;
+}
+
+my-cell,
+my-cell-header {
+    display: inline-block;
+    width: 100px;
+    padding: 0px;
+    margin: 0px;
+    white-space: normal;
+}
+
+my-cell>div,
+my-cell-header>div {
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+.large {
+    min-width: 200px;
+}
+
+.medium {
+    min-width: 100px;
+}
+
+boof-popup {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: lightskyblue;
+}
