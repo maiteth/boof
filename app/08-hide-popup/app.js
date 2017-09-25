@@ -4,24 +4,21 @@
     const app = angular.module('main', []);
 
     app.component('myCell', {
-        controller: function MyCellCtrl($element, veil) {
+        controller: function MyCellCtrl($scope, $element, veil) {
             'ngInject';
             const ctrl = this;
 
             ctrl.isPopupVisible = false;
 
-            ctrl.switchPopup = function () {
-                console.log('popup', arguments);
-                const popup = $element.find('boof-popup');
-                console.log('popup', popup);
+            $scope.$watch('$ctrl.isPopupVisible', () => {
                 if (ctrl.isPopupVisible) {
-                    ctrl.isPopupVisible = false;
-                    veil.stop();
+                    veil.start(function () {
+                        ctrl.isPopupVisible = false;
+                    });
                 } else {
-                    ctrl.isPopupVisible = true;
-                    veil.start(ctrl.switchPopup);
+                    veil.stop();
                 }
-            };
+            });
         },
         templateUrl: 'my-cell.component.html',
     });
