@@ -4,12 +4,13 @@
     const app = angular.module('main', []);
 
     app.component('myCell', {
-        controller: function MyCellCtrl() {
+        controller: function MyCellCtrl($element) {
+            'ngInject';
             const ctrl = this;
 
             ctrl.isPopupVisible = false;
 
-            ctrl.popup = function (header) {
+            ctrl.popup = function () {
                 console.log('popup', arguments);
                 const popup = $element.find('boof-popup');
                 console.log('popup', popup);
