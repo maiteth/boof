@@ -5,6 +5,10 @@
 
     app.component('myCell', {
         controller: function MyCellCtrl() {
+            const ctrl = this;
+
+            ctrl.isPopupVisible = false;
+
             ctrl.popup = function (header) {
                 console.log('popup', arguments);
                 const popup = $element.find('boof-popup');

@@ -1,4 +1,4 @@
-voile-popup {
+boof-popup {
     display: block;
     position: absolute;
     top: 0px;
@@ -8,6 +8,6 @@ voile-popup {
 }
 
 
-#hello {
+[ng-click] {
     cursor: pointer;
 }
