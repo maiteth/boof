@@ -11,6 +11,7 @@
             ctrl.isPopupVisible = false;
 
             $scope.$watch('$ctrl.isPopupVisible', () => {
+                console.log('scope', $scope);
                 if (ctrl.isPopupVisible) {
                     veil.start(function () {
                         ctrl.isPopupVisible = false;
