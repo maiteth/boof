@@ -4,3 +4,26 @@ popupable {
     padding: 5px;
     background-color: #eee;
 }
+
+my-veil {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+boof-popup {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    background-color: white;  
+}
+
+[ng-click] {
+    cursor: pointer;
+}
