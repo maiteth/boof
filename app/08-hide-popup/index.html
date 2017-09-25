@@ -9,30 +9,10 @@
 </head>
 
 <body>
-    <voile-popup>
-        <p id="hello" ng-class="$ctrl.getClass(header)">Hello</p>
-    </voile-popup>
-
-    
-    <div ng-click="$ctrl.popup()" ng-bind-html="::$ctrl.h.short"></div>
-    <boof-popup ng-show="$ctrl.isPopupVisible" ng-click="$ctrl.isPopupVisible = false">
-        <my-popup >
-            <a ng-href="{{$ctrl.h.href}}" target="_blank">Plus d'informations</a><br>
-            <button ng-click="$ctrl.orderBy($ctrl.h.column, false)">A -> Z</button><br>
-            <button ng-click="$ctrl.orderBy($ctrl.h.column, true)">Z -> A</button>
-        </my-popup>
-    </boof-popup>
-    
+    <my-cell></my-cell>
 
     <script src="../../node_modules/angular/angular.js"></script>
-    <script src="../../node_modules/angular-sanitize/angular-sanitize.js"></script>
-    <script src="../../node_modules/d3/build/d3.js"></script>
-    <script src="../resources/header.js"></script>
     <script src="app.js"></script>
-    <script src="boof-layout/boof-layout.js"></script>
-    <script src="boof-table/boof-table.module.js"></script>
-    <script src="boof-table/boof-table.component.js"></script>
-    <script src="boof-table/my-cell-header.component.js"></script>
 </body>
 
 </html>
