@@ -19,9 +19,65 @@ body {
 
 boof-header {
     display: table-row;
+    position: relative;
     width: 100%;
-    height: 100px;
-    background-color: hsla(0, 0%, 95%, 0.5);
+    height: 70px;
+    background-image: url('../../img/header.png');
+    color: white;
+}
+
+boof-header>div {
+    width: inherit;
+    height: inherit;
+    float: right;
+    background-color: hsla(105, 0%, 10%, 0.8);
+}
+
+header-menu {
+    height: inherit;
+}
+
+header-menu>div {
+    width: auto;
+    height: inherit;
+    margin-right: 10px;
+    float: right;
+}
+
+header-menu span {
+    display: table-cell;
+    width: 200px;
+    height: inherit;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 800;
+    font-size: 22px;
+}
+
+header-menu span:hover {
+    background-color: hsl(0, 0%, 5%);
+}
+
+header-menu span:active {
+    background-color: hsl(0, 0%, 5%);
+}
+
+header-menu span>a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+header-menu span>a:hover {
+    text-decoration: underline;
+}
+
+header-menu span>a:active {
+    text-decoration: underline;
+}
+
+header-menu span>a:visited {
+    text-decoration: none;
 }
 
 boof-footer {
@@ -105,76 +161,4 @@ boof-popup {
     width: 200px;
     height: 200px;
     background: lightskyblue;
-}
-
-
-/* header */
-
-boof-header {
-    display: block;
-    width: 100%;
-    height: 100px;
-    background-image: url('../../../img/boof/header.png');
-    background-color: white;
-}
-
-#menu {
-    height: 100px;
-    text-align: center;
-}
-
-.align-center {
-    display: block;
-    margin: 0px auto;
-}
-
-boof-header a {
-    text-align: center;
-    display: table-cell;
-    padding: 35px 50px;
-    vertical-align: middle;
-    font-size: 24px;
-    font-weight: 800;
-    color: hsl(0, 0%, 0%);
-}
-
-boof-header a:hover {
-    color: hsl(0, 0%, 14%);
-}
-
-boof-header a:visited {
-    color: hsl(0, 0%, 14%);
-}
-
-
-/* footer */
-
-h1 {
-    font-size: 20px;
-    padding-bottom: 10px;    
-}
-
-boof-footer {
-    display: block;
-    width: 100%;
-    height: 100px;
-    background-color: hsla(0, 0%, 85%, 1);
-}
-
-boof-footer>div {
-    display: block;
-    margin: 0px auto;
-}
-
-.block-footer {
-    display: inline-block;
-    width: 200px;
-    height: 100px;
-    text-align: center;
-}
-
-.social-media {
-    margin: 0px 5px;
-    width: 30px;
-    color: grey;
 }
