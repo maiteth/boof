@@ -30,6 +30,12 @@ app.use(serveIndex('.', {
 	view: 'details',
 }));
 
+app.use('/app/09-header-footer', function (req, res, next) {
+	res.sendFile('app/09-header-footer/index.html', {
+		root: '.'
+	});
+});
+
 app.use(function (req, res, next) {
 	console.log('Not Found', req.url);
 	// res.status(404).sendFile('404.html', {root: '.'});
