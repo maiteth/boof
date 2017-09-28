@@ -1,3 +1,5 @@
+import './style.scss';
+
 import './boof-layout/boof-layout.js';
 import './boof-table/boof-table.module.js';
 
