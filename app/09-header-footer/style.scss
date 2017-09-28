@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Libre+Barcode+39+Text');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300,700|Libre+Barcode+39+Text');
 * {
     padding: 0px;
     margin: 0px;
@@ -27,6 +27,7 @@ boof-table {
     display: table-row;
     width: 100%;
     font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
 }
 
 my-table-wrapper {
