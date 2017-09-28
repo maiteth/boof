@@ -56,7 +56,13 @@ boof-header {
             font-family: 'Libre Barcode 39 Text', cursive;
             font-weight: 400;
             font-size: 60px;
-            color: hsl(120, 100%, 20%);
+            >a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: hsl(120, 100%, 20%);
+                text-decoration: none;
+            }
         }
     }
 }
