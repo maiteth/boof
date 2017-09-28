@@ -7,7 +7,7 @@ import contactHtml from './tmpl/contact.html';
 
 const app = angular.module('boof-route', ['ui.router']); // les [] pour initialiser un module, sinon on le recupere
 
-app.config(function ($stateProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state({
         name: 'home',
         url: '/',
@@ -28,4 +28,6 @@ app.config(function ($stateProvider) {
         url: '/contact',
         template: contactHtml
     });
+
+    $urlRouterProvider.otherwise('/');
 });
