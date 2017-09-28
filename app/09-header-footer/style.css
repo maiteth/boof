@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Libre+Barcode+39+Text');
 * {
     padding: 0px;
     margin: 0px;
@@ -45,8 +45,11 @@ boof-header>div>site-id {
     flex-grow: 3;
     display: block;
     height: 100%;
-    padding: 11px 20px;
-    font-size: 2em;
+    padding: 5px 20px;
+    font-family: 'Libre Barcode 39 Text', cursive;
+    font-weight: 400;
+    font-size: 60px;
+    color: hsl(120, 100%, 20%);
 }
 
 boof-header>div>menu {
