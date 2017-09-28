@@ -1,3 +1,5 @@
+import './boof-layout.scss';
+
 const app = angular.module('boof-layout', []); // les [] pour initialiser un module, sinon on le recupere
 
 app.component('boofHeader', {
