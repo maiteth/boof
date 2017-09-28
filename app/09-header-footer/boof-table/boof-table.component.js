@@ -135,5 +135,5 @@ export const boofTable = {
     bindings: {
         csv: '@' // @ : recupere sous forme de chaine de caracteres
     },
-    templateUrl: 'boof-table.html' // lien du fichier a partir duquel on recupere
+    templateUrl: './boof-table/tmpl/boof-table.html' // lien du fichier a partir duquel on recupere
 };

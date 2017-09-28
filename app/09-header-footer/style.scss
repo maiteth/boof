@@ -24,13 +24,6 @@ body {
 /* table */
 
 boof-table {
-    display: table-row;
-    width: 100%;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
-}
-
-my-table-wrapper {
     display: block;
     position: relative;
     width: 100%;
@@ -48,6 +41,8 @@ my-table {
     right: 0px;
     overflow-x: scroll;
     overflow-y: scroll;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
 }
 
 my-header {

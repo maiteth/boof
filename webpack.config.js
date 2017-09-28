@@ -30,6 +30,68 @@ module.exports = {
                 fallback: 'style-loader',
                 use: 'css-loader?minimize&sourceMap!sass-loader?sourceMap'
             })
+        }, {
+            test: /\.html$/,
+            use: [{
+                loader: 'html-loader',
+                options: {
+                    minimize: true
+                }
+            }],
+        }, {
+            test: /\.jpg$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                    publicPath: './wpk/'
+                }
+            }]
+        }, {
+            test: /\.png$/,
+            use: ['url-loader?mimetype=image/png']
+        }, {
+            test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    // publicPath: './wpk/',
+                    limit: 10000,
+                    mimetype: 'application/font-woff'
+                }
+            }]
+        }, {
+            test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    // publicPath: './wpk/',
+                    limit: 10000,
+                    mimetype: 'application/octet-stream'
+                }
+            }]
+        }, {
+            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: './wpk/'
+                }
+            }]
+        }, {
+            test: /(fontawesome-webfont|glyphicons-halflings-regular)\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]',
+                    // publicPath: './wpk/',
+                    limit: 10000,
+                    mimetype: 'image/svg+xml'
+                }
+            }]
         }]
     },
     devtool: 'source-map',

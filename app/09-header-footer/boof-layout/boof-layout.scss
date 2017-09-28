@@ -1,5 +1,4 @@
 @import '../../resources/colors';
-
 boof-header,
 boof-footer {
     display: table-row;
@@ -37,7 +36,7 @@ boof-header {
                         background-color: hsla($primaryHue, 100%, 20%, 0.2);
                         text-decoration: none;
                     }
-                    &:active{
+                    &:active {
                         background-color: hsla($primaryHue, 100%, 15%, 0.4);
                     }
                     &.active {
@@ -82,5 +81,16 @@ boof-footer {
                 }
             }
         }
+    }
+}
+
+// body
+boof-body {
+    display: table-row;
+    width: 100%;
+    ui-view {
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 }
