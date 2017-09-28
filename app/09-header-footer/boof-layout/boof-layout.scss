@@ -1,4 +1,4 @@
-/* header */
+@import '../../resources/colors';
 
 boof-header,
 boof-footer {
@@ -33,11 +33,14 @@ boof-header {
                     text-decoration: none;
                     color: black;
                     &:hover {
-                        background-color: hsl(0, 0%, 75%);
+                        background-color: hsla($primaryHue, 100%, 20%, 0.2);
                         text-decoration: none;
                     }
-                    &:active {
-                        background-color: hsl(0, 0%, 75%);
+                    &:active{
+                        background-color: hsla($primaryHue, 100%, 15%, 0.4);
+                    }
+                    &.active {
+                        background-color: hsla($primaryHue, 100%, 20%, 0.4);
                     }
                     &:visited {
                         text-decoration: none;
