@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed');
 * {
     padding: 0px;
     margin: 0px;
@@ -15,6 +16,8 @@ body {
     right: 0px;
     margin: 0px;
     max-width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
 
@@ -55,7 +58,7 @@ header-menu span {
     height: inherit;
     text-align: center;
     vertical-align: middle;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 22px;
 }
 
@@ -89,7 +92,7 @@ boof-footer>div {
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center; 
+    align-items: center;
 }
 
 boof-footer>div>span {
@@ -108,6 +111,7 @@ boof-footer img {
 boof-table {
     display: table-row;
     width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 my-table-wrapper {
@@ -160,6 +164,10 @@ my-cell-header>div {
     width: 100%;
     height: 100%;
     padding: 5px 10px;
+}
+
+my-cell>div {
+    font-weight: 200;
 }
 
 [ng-click] {
