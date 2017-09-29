@@ -15,6 +15,6 @@ app.service('boofTable', function BoofTable() {
 	this.reverse = false;
 });
 
-app.run(function(boofCsv) {
-	boofCsv.init();
-});
+// cette fonction ne fait rien sauf que pour la jouer angular est oblige d'instancier boofCsv.
+// comme ca le constructeur de boofCsv est appele des le chargement de l'application
+app.run(function(boofCsv) {});

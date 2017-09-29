@@ -69,78 +69,16 @@ export const boofTable = {
 			// getCol(array, 0); //Get first column
 		};
 
-		ctrl.refresh = function() {
-			if (!boofCsv.ciqual) {
-				return;
-			}
-			// reprise du code d3 pour recuperer le fichier csv
-			const dsv = d3.dsvFormat(';');
-			const csvData = dsv.parse(boofCsv.ciqual, function(row) {
-				for (let p in row) {
-					if (p in window.headers) {
-						const header = window.headers[p];
-						if (!header.type) {
-							row[p] = +row[p] || '-';
-						}
-					}
-				}
-				return row;
-			});
-			console.log('csvData', csvData);
-
-			// recuperation des en-tetes
-			ctrl.headers = [];
-			for (let p in csvData[0]) {
-				let header;
-				if (p in window.headers) {
-					header = window.headers[p];
-				} else {
-					header = {
-						short: p,
-						long: p,
-					};
-				}
-				header.column = p;
-				ctrl.headers.push(header);
-			}
-			console.log('headers', ctrl.headers);
-
-			// recuperation des lignes
-			ctrl.rows = csvData.map(function(row) {
-				const result = {};
-				result.array = [];
-				result.object = row;
-				for (let p in row) {
-					const cell = {
-						value: row[p],
-						header: {},
-					};
-					if (p in window.headers) {
-						const header = window.headers[p];
-						cell.header = header;
-					}
-					result.array.push(cell); // push : push dans le dernier index du tableau
-				}
-				return result;
-			});
-
-		};
-
 		// initialisation angular
 		ctrl.$onInit = function() {
 			ctrl.configScroll();
-		};
-
-		ctrl.$onChanges = function() {
-			console.log('$onChanges', arguments);
-			ctrl.refresh();
 		};
 
 	},
 
 	// recupere les donnees d'un fichier
 	bindings: {
-		csv: '<' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
+		csv: '=' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
 	},
 	templateUrl: './boof-table/tmpl/boof-table.html' // lien du fichier a partir duquel on recupere
 };
