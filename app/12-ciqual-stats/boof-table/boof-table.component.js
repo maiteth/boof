@@ -43,7 +43,7 @@ export const boofTableComponent = {
 				const tolerance = 2;
 
 				if (elt.scrollTop + elt.clientHeight >= elt.scrollHeight - tolerance) {
-					ctrl.boofTable.limit += 15;
+					ctrl.limit += 15;
 					$scope.$apply();
 				}
 

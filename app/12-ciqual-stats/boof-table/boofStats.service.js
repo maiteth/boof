@@ -13,11 +13,21 @@ export function BoofStats() {
 
 			if (!acc) {
 				acc = {};
-				acc.array = n.array;
 				acc.object = {};
 				for (let p in n.object) {
 					acc.object[p] = [];
 				}
+
+				acc.array = [];
+				console.log('n.array.length', n.array.length);
+				for (let i = 0; i < n.array.length; i++) {
+					console.log('n.array[i].value', n.array[i].value);
+					const obj = {};
+					angular.copy(n.array[i], obj);
+					obj.value = [];
+					acc.array.push(obj);
+				}
+
 			}
 			for (let p in n.object) {
 				const num = +n.object[p];
@@ -25,10 +35,23 @@ export function BoofStats() {
 					acc.object[p].push(n.object[p]);
 				}
 			}
+			for (let i = 0; i < n.array.length; i++) {
+				const num = +n.array[i].value;
+				if (!isNaN(num)) {
+					acc.array[i].value.push(n.array[i].value);
+				}
+			}
+
 			return acc;
 		}, undefined);
 		for (let p in median.object) {
 			median.object[p] = d3.quantile(median.object[p], 0.5);
+		}
+		for (let i = 0; i < median.array.length; i++) {
+			median.array[i].value = d3.quantile(median.array[i].value, 0.5);
+			if (!isNaN(median.array[i].value)) {
+				median.array[i].value = +median.array[i].value.toFixed(4);
+			}
 		}
 		result.rows.push(median);
 		console.log('median', median);
