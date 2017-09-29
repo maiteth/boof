@@ -6,13 +6,14 @@ export class BoofCsv {
 	constructor($http, boofStats) {
 		this.$http = $http;
 
-		this.$http.get('../resources/ciqual.csv').then((response) => {
+		this.$http.get('../resources/ciqual.csv').then(response => {
 			this.ciqual = new TableData();
 			this.ciqual.initFromCsv(response.data, () => {
 				this.stats = boofStats.generateStats(this.ciqual);
+				console.log('stats', this.stats);
 			});
 
-		}).catch((error) => {
+		}).catch(error => {
 			console.error('Error', error);
 		});
 
