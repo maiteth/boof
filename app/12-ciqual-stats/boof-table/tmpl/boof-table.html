@@ -4,7 +4,7 @@
         </my-cell-header>
     </my-header>
     <my-body>
-        <my-row ng-repeat="row in $ctrl.csv.rows | orderBy : $ctrl.boofTable.column : $ctrl.boofTable.reverse |limitTo:$ctrl.boofTable.limit track by $index">
+        <my-row ng-repeat="row in $ctrl.csv.rows | orderBy : $ctrl.column : $ctrl.reverse |limitTo:$ctrl.limit track by $index">
             <my-cell ng-repeat="cell in ::row.array track by $index" title="{{::cell.header.long}}" ng-class="$ctrl.getClass(cell.header)">
                 <div>{{::cell.value}}</div>
             </my-cell>

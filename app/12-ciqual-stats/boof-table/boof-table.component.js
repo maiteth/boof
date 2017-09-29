@@ -1,10 +1,12 @@
-export const boofTable = {
+export const boofTableComponent = {
 
-	controller: function BoofTableCtrl($scope, $window, boofTable, boofCsv) {
+	controller: function BoofTableCtrl($scope, $window, boofCsv) {
 		'ngInject';
 		const ctrl = this;
 
-		ctrl.boofTable = boofTable;
+		ctrl.limit = 40;
+		ctrl.column = 'object[\'ORIGGPCD\'].value';
+		ctrl.reverse = false;
 
 		// inserer une classe dans le DOM
 		ctrl.getClass = function(header) {
@@ -41,7 +43,7 @@ export const boofTable = {
 				const tolerance = 2;
 
 				if (elt.scrollTop + elt.clientHeight >= elt.scrollHeight - tolerance) {
-					boofTable.limit += 15;
+					ctrl.boofTable.limit += 15;
 					$scope.$apply();
 				}
 

@@ -1,11 +1,14 @@
 export const myCellHeader = {
+    require: {
+        boofTable: '^^boofTable',
+    },
+
     bindings: {
         h: '=',
     },
-    controller: function ($element, boofTable) {
+    controller: function ($element) {
         'ngInject';
         const ctrl = this;
-        ctrl.boofTable = boofTable;
 
         ctrl.orderBy = function (col, reverse) {
             console.log('orderBy', arguments);
