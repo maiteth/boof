@@ -72,11 +72,15 @@ export const boofTable = {
 		ctrl.$onInit = function() {
 			ctrl.configScroll();
 		};
+
+		ctrl.$onChanges = function() {
+			console.log('onChanges', arguments);
+		};
 	},
 
 	// recupere les donnees d'un fichier
 	bindings: {
-		csv: '=' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
+		csv: '<' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
 	},
 	templateUrl: './boof-table/tmpl/boof-table.html' // lien du fichier a partir duquel on recupere
 };

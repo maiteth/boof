@@ -7,7 +7,7 @@ export function BoofStats() {
 		console.log('generateStats', dataSample);
 		const result = new TableData();
 		result.headers = dataSample.headers;
-		result.rows = dataSample.rows.slice(1, 5);
+		result.rows = dataSample.rows.
 		console.log('result', result);
 		
 		return result;

@@ -20,15 +20,20 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
 		url: '/table',
 		template: tableHtml,
 		controller: function TableCtrl(boofCsv) {
-            'ngInject';
-            this.boofCsv = boofCsv;
-        },
-        controllerAs: '$ctrl'
+			'ngInject';
+			this.boofCsv = boofCsv;
+		},
+		controllerAs: '$ctrl'
 	});
 	$stateProvider.state({
 		name: 'info',
 		url: '/info',
-		template: infoHtml
+		template: infoHtml,
+		controller: function TableCtrl(boofCsv) {
+			'ngInject';
+			this.boofCsv = boofCsv;
+		},
+		controllerAs: '$ctrl'
 	});
 	$stateProvider.state({
 		name: 'contact',
