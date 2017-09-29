@@ -9,7 +9,7 @@ export function BoofStats() {
 		result.headers = dataSample.headers;
 		result.rows = [];
 
-		const median = dataSample.rows.reduce((acc, n) => {
+		const sampleRow = dataSample.rows.reduce((acc, n) => {
 
 			if (!acc) {
 				acc = {};
@@ -44,17 +44,21 @@ export function BoofStats() {
 
 			return acc;
 		}, undefined);
-		for (let p in median.object) {
-			median.object[p] = d3.quantile(median.object[p], 0.5);
-		}
-		for (let i = 0; i < median.array.length; i++) {
-			median.array[i].value = d3.quantile(median.array[i].value, 0.5);
-			if (!isNaN(median.array[i].value)) {
-				median.array[i].value = +median.array[i].value.toFixed(4);
+		for (let indice of [0.25, 0.5, 0.75]) {
+			const row = {};
+			angular.copy(sampleRow, row);
+			for (let p in row.object) {
+				row.object[p] = d3.quantile(row.object[p], indice);
 			}
+			for (let i = 0; i < row.array.length; i++) {
+				row.array[i].value = d3.quantile(row.array[i].value, indice);
+				if (!isNaN(row.array[i].value)) {
+					row.array[i].value = +row.array[i].value.toFixed(4);
+				}
+			}
+			result.rows.push(row);
+			console.log('row', row);
 		}
-		result.rows.push(median);
-		console.log('median', median);
 		console.log('result', result);
 		return result;
 	}
