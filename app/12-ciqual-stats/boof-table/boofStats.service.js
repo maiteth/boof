@@ -4,7 +4,6 @@ export function BoofStats() {
 	'ngInject';
 
 	this.generateStats = function(dataSample) {
-		console.log('generateStats', dataSample);
 		const result = new TableData();
 		result.headers = dataSample.headers;
 		result.rows = [];
@@ -19,9 +18,7 @@ export function BoofStats() {
 				}
 
 				acc.array = [];
-				console.log('n.array.length', n.array.length);
 				for (let i = 0; i < n.array.length; i++) {
-					console.log('n.array[i].value', n.array[i].value);
 					const obj = {};
 					angular.copy(n.array[i], obj);
 					obj.value = [];
@@ -57,9 +54,7 @@ export function BoofStats() {
 				}
 			}
 			result.rows.push(row);
-			console.log('row', row);
 		}
-		console.log('result', result);
 		return result;
 	}
 };
