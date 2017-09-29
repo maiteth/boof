@@ -1,46 +1,5 @@
-export class BoofCsv {
-	/* @ngInject */
-
-	constructor($http) {
-		this.$http = $http;
-
-		this.$http.get('../resources/ciqual.csv').then((response) => {
-			this.ciqual = new TableData(response.data);
-		}).catch((error) => {
-			console.error('Error', error);
-		});
-
-		this.$http.get('../resources/toto.csv').then((response) => {
-			this.toto = new TableData(response.data);
-		}).catch((error) => {
-			console.error('Error', error);
-		});
-	}
-
-};
-
-// export function BoofCsv($http) {
-// 	'ngInject';
-
-// 	this.init = function() {
-// 		$http.get('../resources/ciqual.csv').then((response) => {
-// 			console.log('csv loaded');
-// 			this.ciqual = response.data;
-// 		}).catch((error) => {
-// 			console.error('Error', error);
-// 		});
-
-// 		$http.get('../resources/toto.csv').then((response) => {
-// 			this.toto = response.data;
-// 		}).catch((error) => {
-// 			console.error('Error', error);
-// 		});
-// 	}
-
-// };
-
-class TableData {
-	constructor(csv) {
+export class TableData {
+	initFromCsv(csv, next) {
 		// reprise du code d3 pour recuperer le fichier csv
 		const dsv = d3.dsvFormat(';');
 		const csvData = dsv.parse(csv, function(row) {
@@ -87,5 +46,8 @@ class TableData {
 			}
 			return result;
 		});
+		if (next) {
+			next();
+		}
 	}
 }

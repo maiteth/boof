@@ -5,7 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: {
         vendor: './app/vendor.js',
-        '09-header-footer': './app/09-header-footer/app.js'
+        '09-header-footer': './app/09-header-footer/app.js',
+        '12-ciqual-stats': './app/12-ciqual-stats/app.js',
     },
     output: {
         filename: '[name].js',
@@ -98,7 +99,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('[name].css'),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['09-header-footer', 'vendor']
+            name: ['vendor']
         }),
     ]
 }
