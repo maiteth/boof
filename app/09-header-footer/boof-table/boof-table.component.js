@@ -1,6 +1,6 @@
 export const boofTable = {
 
-	controller: function BoofTableCtrl($scope, $window, $rootScope, boofTable) {
+	controller: function BoofTableCtrl($scope, $window, boofTable, boofCsv) {
 		'ngInject';
 		const ctrl = this;
 
@@ -70,9 +70,12 @@ export const boofTable = {
 		};
 
 		ctrl.refresh = function() {
+			if (!boofCsv.ciqual) {
+				return;
+			}
 			// reprise du code d3 pour recuperer le fichier csv
 			const dsv = d3.dsvFormat(';');
-			const csvData = dsv.parse($rootScope.ciqual, function(row) {
+			const csvData = dsv.parse(boofCsv.ciqual, function(row) {
 				for (let p in row) {
 					if (p in window.headers) {
 						const header = window.headers[p];
@@ -121,8 +124,6 @@ export const boofTable = {
 				return result;
 			});
 
-			// n'etant pas dans une fonction angular lancement de la «digestion» manuel
-			$scope.$apply();
 		};
 
 		// initialisation angular
@@ -130,16 +131,16 @@ export const boofTable = {
 			ctrl.configScroll();
 		};
 
-		$rootScope.$watch('ciqual', function() {
-            console.log('$onChanges', arguments);
-            ctrl.refresh();
-		});
+		ctrl.$onChanges = function() {
+			console.log('$onChanges', arguments);
+			ctrl.refresh();
+		};
 
 	},
 
 	// recupere les donnees d'un fichier
 	bindings: {
-		csv: '@' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
+		csv: '<' // @ : recupere sous forme de chaine de caracteres, < : recupere une variable du modele
 	},
 	templateUrl: './boof-table/tmpl/boof-table.html' // lien du fichier a partir duquel on recupere
 };

@@ -1,14 +1,19 @@
-export const boofCsv = function BoofCsv($rootScope) {
+export const BoofCsv = function ($http) {
 	'ngInject';
-	const service = this;
 
-	d3.text('../resources/ciqual.csv', function(err, str) {
-		$rootScope.ciqual = str;
-        console.log('fileloaded');
-        $rootScope.$apply();
-	});
+	this.init = function() {
+		$http.get('../resources/ciqual.csv').then((response) => {
+			console.log('csv loaded');
+			this.ciqual = response.data;
+		}).catch((error) => {
+			console.error('Error', error);
+		});
 
-	d3.text('../resources/toto.csv', function(err, str) {
-		$rootScope.toto = str;
-	});
+		$http.get('../resources/toto.csv').then((response) => {
+			this.toto = response.data;
+		}).catch((error) => {
+			console.error('Error', error);
+		});
+	}
+
 };
