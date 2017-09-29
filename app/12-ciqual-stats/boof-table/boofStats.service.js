@@ -31,7 +31,6 @@ export function BoofStats() {
 			median.object[p] = d3.quantile(median.object[p], 0.5);
 		}
 		result.rows.push(median);
-		result.rows.push(median);
 		console.log('median', median);
 		console.log('result', result);
 		return result;
