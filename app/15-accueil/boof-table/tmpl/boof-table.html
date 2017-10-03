@@ -1,0 +1,14 @@
+<my-table>
+    <my-header>
+        <my-cell-header ng-repeat="header in ::$ctrl.csv.headers track by $index" title="{{::header.long}}" ng-class="$ctrl.getClass(header)" h="header">
+        </my-cell-header>
+    </my-header>
+   xxx {{$ctrl.reverse}} {{$ctrl.column}}
+    <my-body>
+        <my-row ng-repeat="row in $ctrl.csv.rows | orderBy : $ctrl.column : $ctrl.reverse | limitTo:$ctrl.limit">
+            <my-cell ng-repeat="cell in ::row.array" title="{{::cell.header.long}}" ng-class="$ctrl.getClass(cell.header)">
+                <div>{{::cell.value}}</div>
+            </my-cell>
+        </my-row>
+    </my-body>
+</my-table>
