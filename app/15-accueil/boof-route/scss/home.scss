@@ -1,7 +1,7 @@
 cover {
 	display: block;
 	position: relative;
-	background-color: black;
+	background-color: white;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -9,6 +9,7 @@ cover {
 	height: 100%;
 	padding: 192px 0px 160px 0px;
 	background-image: url("http://ocpforum.org/maite/boof/img/fruits-82524.jpg");
+	// filter: grayscale(10);
 }
 
 cover:after {
@@ -20,8 +21,8 @@ cover:after {
 	top: 0;
 	left: 0;
 	transition: opacity 4s ease;
-	background-color: black;
-	opacity: 0.25;
+	background-color: white;
+	opacity: 0.95;
 	pointer-events: none;
 }
 
