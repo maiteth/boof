@@ -2,6 +2,7 @@
 
 const express = require('express');
 const serveIndex = require('serve-index');
+const fs = require('fs');
 
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
@@ -30,17 +31,17 @@ app.use(serveIndex('.', {
 	view: 'details',
 }));
 
-app.use('/app/09-header-footer', function (req, res, next) {
-	res.sendFile('app/09-header-footer/index.html', {
+const array = fs.readdirSync('./app').filter(n => n.match(/^\d\d-/)).map(n => `/app/${n}/*`);
+console.log('array', array);
+
+app.all(array, function (req, res, next) {
+	console.log('req.url', req.url);
+	const dir = req.url.replace(/^\/[^/]*\/([^/]*?)\/.*$/, '$1');
+	res.sendFile(`app/${dir}/index.html`, {
 		root: '.'
 	});
 });
 
-app.use('/app/12-ciqual-stats', function (req, res, next) {
-	res.sendFile('app/12-ciqual-stats/index.html', {
-		root: '.'
-	});
-});
 
 app.use(function (req, res, next) {
 	console.log('Not Found', req.url);
