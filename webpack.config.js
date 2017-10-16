@@ -8,6 +8,8 @@ module.exports = {
         '09-header-footer': './app/09-header-footer/app.js',
         '12-ciqual-stats': './app/12-ciqual-stats/app.js',
         '14-font-awesome': './app/14-font-awesome/app.js',
+        '15-accueil': './app/15-accueil/app.js',
+
     },
     output: {
         filename: '[name].js',
