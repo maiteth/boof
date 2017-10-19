@@ -43,7 +43,6 @@ var title = svg.append("text")
 	.text(2000);
 
 d3.csv("population.csv", function(error, data) {
-
 	// Convert strings to numbers.
 	data.forEach(function(d) {
 		d.people = +d.people;
@@ -62,9 +61,9 @@ d3.csv("population.csv", function(error, data) {
 			return d.year;
 		}),
 		year = year1;
-		console.log('age1', age1);
-		console.log('year0', year0);
-		console.log('year1', year1);
+	console.log('age1', age1);
+	console.log('year0', year0);
+	console.log('year1', year1);
 
 	// Update the scale domains.
 	x.domain([year1 - age1, year1]);
@@ -86,6 +85,7 @@ d3.csv("population.csv", function(error, data) {
 			});
 		})
 		.map(data);
+		console.log('data', data);
 
 	// Add an axis to show the population values.
 	svg.append("g")
