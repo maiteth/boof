@@ -9,6 +9,7 @@ var table = [
 function add() {
 	var str = document.querySelector('#text').value;
 	table.push(str);
+	document.querySelector('#text').value = 'toutou ' + (Math.random() * 1000).toFixed(0);
 	console.log('table', table);
 	refresh();
 }
@@ -36,7 +37,7 @@ function refresh() {
 	var selectAll = selection.selectAll('li');
 	console.log('selectAll', selectAll);
 
-	var bind = selectAll.data(table);
+	var bind = selectAll.data(table, function(d, i) { return d; });
 	console.log('bind', bind);
 
 	// enter
@@ -44,18 +45,18 @@ function refresh() {
 	console.log('enter', enter);
 
 	var comingLi = enter.append('li');
-	comingLi.style("background-color", "red").transition().duration(2000).ease(d3.easeLinear).style("background-color", "transparent");
-		
+	comingLi.style("max-height", "0px").transition().duration(500).ease(d3.easeLinear).style("max-height", "30px");
+
 
 	// update
 	comingLi.merge(bind).html(function(d, i) {
-		return `<input type="checkbox" id="li-${i}">${i} - ${d}`;
+		return `<input type="checkbox" id="li-${i}"> ${d}`;
 	});
 
 	// exit
 	var exit = bind.exit();
 	console.log('exit', exit);
-	exit.remove();
+	exit.style("max-height", "30px").transition().duration(500).ease(d3.easeLinear).style("max-height", "0px").remove();
 }
 
 refresh();
