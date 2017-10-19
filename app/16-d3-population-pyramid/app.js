@@ -8,11 +8,14 @@ var margin = {
 	height = 500 - margin.top - margin.bottom,
 	barWidth = Math.floor(width / 19) - 1;
 
+// largeur des barres
 var x = d3.scale.linear()
 	.range([barWidth / 2, width - barWidth / 2]);
 
+// hauteur des barres
 var y = d3.scale.linear()
 	.range([height, 0]);
+
 
 var yAxis = d3.svg.axis()
 	.scale(y)
@@ -59,6 +62,9 @@ d3.csv("population.csv", function(error, data) {
 			return d.year;
 		}),
 		year = year1;
+		console.log('age1', age1);
+		console.log('year0', year0);
+		console.log('year1', year1);
 
 	// Update the scale domains.
 	x.domain([year1 - age1, year1]);
