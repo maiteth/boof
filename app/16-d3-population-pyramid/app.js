@@ -94,6 +94,7 @@ d3.csv("population.csv", function(error, data) {
 		.call(yAxis)
 		.selectAll("g")
 		.filter(function(value) {
+			console.log('value', value);
 			return !value;
 		})
 		.classed("zero", true);
