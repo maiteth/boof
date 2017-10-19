@@ -85,7 +85,7 @@ d3.csv("population.csv", function(error, data) {
 			});
 		})
 		.map(data);
-		console.log('data', data);
+	console.log('data', data);
 
 	// Add an axis to show the population values.
 	svg.append("g")
@@ -142,9 +142,11 @@ d3.csv("population.csv", function(error, data) {
 		});
 
 	// Allow the arrow keys to change the displayed year.
-	window.focus();
-	d3.select(window).on("keydown", function() {
-		switch (d3.event.keyCode) {
+	var body = document.querySelector('body');
+	body.addEventListener('keydown', function(e) {
+		console.log('e', e);
+		console.log('arguments', arguments);
+		switch (e.keyCode) {
 			case 37:
 				year = Math.max(year0, year - 10);
 				break;
