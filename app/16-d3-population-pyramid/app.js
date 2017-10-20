@@ -19,30 +19,30 @@ var y = d3.scale.linear()
 
 var yAxis = d3.svg.axis()
 	.scale(y)
-	.orient("right")
+	.orient('right')
 	.tickSize(-width)
 	.tickFormat(function(d) {
-		return Math.round(d / 1e6) + "M";
+		return Math.round(d / 1e6) + 'M';
 	});
 
 // An SVG element with a bottom-right origin.
-var svg = d3.select("body").append("svg")
-	.attr("width", width + margin.left + margin.right)
-	.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select('body').append('svg')
+	.attr('width', width + margin.left + margin.right)
+	.attr('height', height + margin.top + margin.bottom)
+	.append('g')
+	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 // A sliding container to hold the bars by birthyear.
-var birthyears = svg.append("g")
-	.attr("class", "birthyears");
+var birthyears = svg.append('g')
+	.attr('class', 'birthyears');
 
 // A label for the current year.
-var title = svg.append("text")
-	.attr("class", "title")
-	.attr("dy", ".71em")
+var title = svg.append('text')
+	.attr('class', 'title')
+	.attr('dy', '.71em')
 	.text(2000);
 
-d3.csv("population.csv", function(error, data) {
+d3.csv('population.csv', function(error, data) {
 	// Convert strings to numbers.
 	data.forEach(function(d) {
 		d.people = +d.people;
@@ -88,55 +88,55 @@ d3.csv("population.csv", function(error, data) {
 	console.log('data', data);
 
 	// Add an axis to show the population values.
-	svg.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + width + ",0)")
+	svg.append('g')
+		.attr('class', 'y axis')
+		.attr('transform', 'translate(' + width + ',0)')
 		.call(yAxis)
-		.selectAll("g")
+		.selectAll('g')
 		.filter(function(value) {
 			console.log('value', value);
 			return !value;
 		})
-		.classed("zero", true);
+		.classed('zero', true);
 
 	// Add labeled rects for each birthyear (so that no enter or exit is required).
-	var birthyear = birthyears.selectAll(".birthyear")
+	var birthyear = birthyears.selectAll('.birthyear')
 		.data(d3.range(year0 - age1, year1 + 1, 5))
-		.enter().append("g")
-		.attr("class", "birthyear")
-		.attr("transform", function(birthyear) {
-			return "translate(" + x(birthyear) + ",0)";
+		.enter().append('g')
+		.attr('class', 'birthyear')
+		.attr('transform', function(birthyear) {
+			return 'translate(' + x(birthyear) + ',0)';
 		});
 
-	birthyear.selectAll("rect")
+	birthyear.selectAll('rect')
 		.data(function(birthyear) {
 			return data[year][birthyear] || [0, 0];
 		})
-		.enter().append("rect")
-		.attr("x", -barWidth / 2)
-		.attr("width", barWidth)
-		.attr("y", y)
-		.attr("height", function(value) {
+		.enter().append('rect')
+		.attr('x', -barWidth / 2)
+		.attr('width', barWidth)
+		.attr('y', y)
+		.attr('height', function(value) {
 			return height - y(value);
 		});
 
 	// Add labels to show birthyear.
-	birthyear.append("text")
-		.attr("y", height - 4)
+	birthyear.append('text')
+		.attr('y', height - 4)
 		.text(function(birthyear) {
 			return birthyear;
 		});
 
 	// Add labels to show age (separate; not animated).
-	svg.selectAll(".age")
+	svg.selectAll('.age')
 		.data(d3.range(0, age1 + 1, 5))
-		.enter().append("text")
-		.attr("class", "age")
-		.attr("x", function(age) {
+		.enter().append('text')
+		.attr('class', 'age')
+		.attr('x', function(age) {
 			return x(year - age);
 		})
-		.attr("y", height + 4)
-		.attr("dy", ".71em")
+		.attr('y', height + 4)
+		.attr('dy', '.71em')
 		.text(function(age) {
 			return age;
 		});
@@ -163,16 +163,16 @@ d3.csv("population.csv", function(error, data) {
 
 		birthyears.transition()
 			.duration(750)
-			.attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+			.attr('transform', 'translate(' + (x(year1) - x(year)) + ',0)');
 
-		birthyear.selectAll("rect")
+		birthyear.selectAll('rect')
 			.data(function(birthyear) {
 				return data[year][birthyear] || [0, 0];
 			})
 			.transition()
 			.duration(750)
-			.attr("y", y)
-			.attr("height", function(value) {
+			.attr('y', y)
+			.attr('height', function(value) {
 				return height - y(value);
 			});
 	}
