@@ -35,8 +35,9 @@ svg.append('g')
 	.attr('transform', `translate(${margin.left}, ${(height / 2) + margin.top})`)
 	.call(xAxis);
 
-function plot(callback, start, stop, step, color) {
-	var lineData = d3.range(start, stop, step).map(callback);
+function plotTransition(callback1, callback2, start, stop, step, color1, color2) {
+	var lineData1 = d3.range(start, stop, step).map(callback1);
+	var lineData2 = d3.range(start, stop, step).map(callback2);
 
 	//This is the accessor function we talked about above
 	var lineFunction = d3.line()
@@ -46,22 +47,24 @@ function plot(callback, start, stop, step, color) {
 
 	svg.append('path')
 		.attr('transform', `translate(${margin.left}, ${margin.top})`)
-		.attr('d', lineFunction(lineData))
-		.attr('stroke', color)
+		.attr('d', lineFunction(lineData1))
+		.attr('stroke', color1)
 		.attr('stroke-width', 2)
-		.attr('fill', 'none');
+		.attr('fill', 'none')
+		.transition()
+		.duration(10000)
+		.attr('d', lineFunction(lineData2))
+		.attr('stroke', color2);
 }
 
-plot(function(t) {
+plotTransition(function(t) {
 	return {
 		x: Math.cos(t),
 		y: Math.sin(t)
 	};
-}, 0, 6.29, 0.01, 'blue');
-
-plot(function(t) {
+}, function(t) {
 	return {
 		x: Math.cos(t) + 2 * Math.cos(t / 2),
 		y: Math.sin(t)
 	};
-}, 0, 6.29 * 2, 0.01, 'red');
+}, 0, 6.29*2, 0.01, 'blue', 'red');
