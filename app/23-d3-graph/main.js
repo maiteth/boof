@@ -35,11 +35,6 @@ svg.append('g')
 	.attr('transform', `translate(${margin.left}, ${(height / 2) + margin.top})`)
 	.call(xAxis);
 
-// <path d="M150 0 L75 200 L225 200 Z" />
-
-//The data for our line
-
-
 function plot(callback, color) {
 	var lineData = d3.range(-4, 4.1, 0.1).map(d => {
 		return {
