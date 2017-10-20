@@ -11,29 +11,38 @@ var svg = d3.select('svg')
 	.attr('width', width + margin.left + margin.right)
 	.attr('height', height + margin.top + margin.bottom);
 
-var y = d3.scaleLinear()
-	.range([height, 0])
-	.domain([-4, 4]);
+function drawAxes(svg, width, height, margin) {
+	var y = d3.scaleLinear()
+		.range([height, 0])
+		.domain([-4, 4]);
 
-var yAxis = d3.axisLeft()
-	.scale(y)
-	.tickSize(10);
+	var yAxis = d3.axisLeft()
+		.scale(y)
+		.tickSize(10);
 
-svg.append('g')
-	.attr('transform', `translate(${(width / 2) + margin.left},${margin.top})`)
-	.call(yAxis);
+	svg.append('g')
+		.attr('transform', `translate(${(width / 2) + margin.left},${margin.top})`)
+		.call(yAxis);
 
-var x = d3.scaleLinear()
-	.range([0, width])
-	.domain([-4, 4]);
+	var x = d3.scaleLinear()
+		.range([0, width])
+		.domain([-4, 4]);
 
-var xAxis = d3.axisBottom()
-	.scale(x)
-	.tickSize(10);
+	var xAxis = d3.axisBottom()
+		.scale(x)
+		.tickSize(10);
 
-svg.append('g')
-	.attr('transform', `translate(${margin.left}, ${(height / 2) + margin.top})`)
-	.call(xAxis);
+	svg.append('g')
+		.attr('transform', `translate(${margin.left}, ${(height / 2) + margin.top})`)
+		.call(xAxis);
+
+	return {
+		x: x,
+		y: y
+	};
+}
+
+var scale = drawAxes(svg, width, height, margin);
 
 function plotTransition(config) {
 	config = Object.assign({}, {
@@ -52,8 +61,8 @@ function plotTransition(config) {
 
 	//This is the accessor function we talked about above
 	var lineFunction = d3.line()
-		.x(function(d) { return x(d.x); })
-		.y(function(d) { return y(d.y); })
+		.x(function(d) { return scale.x(d.x); })
+		.y(function(d) { return scale.y(d.y); })
 		.curve(d3.curveCatmullRom.alpha(0.5));
 
 	var path = svg.append('path')
@@ -100,7 +109,21 @@ var config = {
 				y: Math.sin(t * 5)
 			};
 		},
+
+		function(t) {
+			return {
+				x: Math.pow(Math.cos(t), 3),
+				y: Math.pow(Math.sin(t), 3),
+			};
+		},
+		function(t) {
+			return {
+				x: Math.cos(2  * t) * Math.cos(t),
+				y: -Math.cos(2  * t) * Math.sin(t),
+			};
+		},
 	],
+
 	start: -2 * Math.PI,
 	stop: 2 * Math.PI
 };
