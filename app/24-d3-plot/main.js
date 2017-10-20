@@ -35,7 +35,7 @@ svg.append('g')
 	.attr('transform', `translate(${margin.left}, ${(height / 2) + margin.top})`)
 	.call(xAxis);
 
-function graph(callback, color) {
+function plot(callback, color) {
 	var lineData = d3.range(-4, 4.1, 0.01).map(d => {
 		return {
 			x: d,
@@ -57,22 +57,22 @@ function graph(callback, color) {
 		.attr('fill', 'none');
 }
 
-graph(function (x) {
+plot(function (x) {
 	return x * x;
 }, 'blue');
 
-graph(function (x) {
+plot(function (x) {
 	return -x * x;
 }, 'red');
 
-graph(function (x) {
+plot(function (x) {
 	return Math.sin(x*5);
 }, 'green');
 
-graph(function (x) {
+plot(function (x) {
 	return Math.cos(x*5);
 }, 'purple');
 
-graph(function (x) {
+plot(function (x) {
 	return Math.tan(x);
 }, 'DarkSlateGray');
