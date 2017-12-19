@@ -4,13 +4,13 @@ function rand() {
 	return Math.random() * Math.random() * Math.random();
 }
 
-function generateCircle(options, width, height) {
+function generateCircle(options) {
 	const array = [];
 
 	// nombre de secteurs horizontaux et verticaux sur l'ecran
 	const dimension = Math.ceil(Math.sqrt(options.count));
-	const w = width / dimension;
-	const h = height / dimension;
+	const w = options.width / dimension;
+	const h = options.height / dimension;
 
 	//generation du tableau et choix de zones au hasard
 	const zones = [];
@@ -34,7 +34,7 @@ function generateCircle(options, width, height) {
 		const c = {
 			x: (zones[i].x + Math.random()) * w,
 			y: (zones[i].y + Math.random()) * h,
-			r: Math.floor(rand() * 200 + 50),
+			r: Math.floor(rand() * 200 + options.radius),
 			c: Math.floor(Math.random() * options.colors.length),
 		};
 		array.push(c);
@@ -55,9 +55,8 @@ app.directive('jlgBubble', () => {
 				const bggen = document.createElement('bggen');
 				const parent = $element[0];
 				parent.appendChild(bggen);
-				const width = bggen.clientWidth;
-				const height = bggen.clientHeight;
-				console.log('height', height);
+				this.options.width = bggen.clientWidth;
+				this.options.height = bggen.clientHeight;
 
 				const colors = this.options.colors || [
 					'hsla(0, 100%, 50%, 0.05)',
@@ -66,12 +65,16 @@ app.directive('jlgBubble', () => {
 					'hsla(60, 100%, 50%, 0.1)',
 				];
 
+				this.options.radius = this.options.radius || 50;
+
 				let content = '';
-				const array = generateCircle(this.options, width, height);
+				const array = generateCircle(this.options);
 				for (let i = 0; i < array.length; i++) {
 					const c = array[i];
-					const opacity = (this.options.opacity) ? `stroke-opacity="${this.options.opacity * 2}" fill-opacity="${this.options.opacity}"` : '';
-					content += `<circle cx="${c.x}" cy="${c.y}" r="${c.r}" stroke="${colors[c.c]}" stroke-width="1" fill="${colors[c.c]}" ${opacity} />`;
+					const opacity = (this.options.opacity) ?
+						`stroke-opacity="${this.options.opacity * 2}" fill-opacity="${this.options.opacity}"` : '';
+					content += `<circle cx="${c.x}" cy="${c.y}" r="${c.r}"
+					 stroke="${colors[c.c]}" stroke-width="1" fill="${colors[c.c]}" ${opacity} />`;
 				}
 
 				const svg = `<svg>${content}</svg>`;
