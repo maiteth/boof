@@ -15,12 +15,12 @@ main {
 	height: 100%;
 }
 
-.bggen {
+[jlg-bubble] {
 	position: relative;
 }
 
-.bggen>bggen,
-.bggen>bggen>svg {
+[jlg-bubble]>bggen,
+[jlg-bubble]>bggen>svg {
 	display: block;
 	position: absolute;
 	top: 0;
