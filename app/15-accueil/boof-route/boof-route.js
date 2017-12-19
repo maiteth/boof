@@ -31,7 +31,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
 		template: tableHtml,
 		controller: function TableCtrl(boofCsv) {
 			'ngInject';
-			this.boofCsv = boofCsv;
+			this.boofCsv = boofCsv; 
 		},
 		controllerAs: '$ctrl'
 	});
